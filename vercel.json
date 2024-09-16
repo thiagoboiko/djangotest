@@ -1,0 +1,26 @@
+{
+    "builds": [
+      {
+        "src": "alura_space-aula_5/setup/wsgi.py",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "staticfiles_build"
+        }
+      },
+      {
+        "src": "alura_space-aula_5/setup/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "alura_space-aula_5/setup/wsgi.py"
+      },
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      }
+    ]
+  }
